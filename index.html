@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="bg"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NoteBox | Оригинални подаръци за всеки повод | Демо редизайн</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@400;600&family=Cormorant:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#A55057;--rose2:#8B5650;--dust:#CB959A;--blush:#F6E4E4;--cream:#F8F3ED;--bg:#F8F3ED;--card:#fff;--ink:#212121;--mut:#807369;--line:#eadcd6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1315;--card:#291b1e;--ink:#f6e4e4;--mut:#c9b3ad;--line:#41292d;--blush:#35232a}}
+:root[data-theme="dark"]{--bg:#1c1315;--card:#291b1e;--ink:#f6e4e4;--mut:#c9b3ad;--line:#41292d;--blush:#35232a}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Raleway',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0}a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Old Standard TT',Georgia,serif;font-weight:400;line-height:1.15}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--rose);color:#fff;padding:14px 26px;text-transform:uppercase;letter-spacing:.08em;font-size:13px;font-weight:600;transition:.25s}
+.btn:hover{background:var(--rose2);transform:translateY(-2px)}.btn.gh{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+.top{background:var(--dust);color:#fff;font-size:13px;text-align:center;padding:6px 12px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--card) 85%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:14px}
+.logo{font:700 26px 'Old Standard TT',serif;color:var(--rose);letter-spacing:.02em}.logo small{display:block;font:600 8.5px 'Raleway';letter-spacing:.3em;color:var(--mut);margin-top:-2px}
+nav{display:flex;gap:22px;font-size:13px;text-transform:uppercase;letter-spacing:.1em;font-weight:500}nav a:hover{color:var(--rose)}
+.ib{display:flex;gap:10px}.ib button{background:var(--blush);color:var(--rose);height:40px;padding:0 15px;border-radius:999px;font-weight:700;font-size:14px}.ib b{background:var(--rose);color:#fff;border-radius:50%;padding:1px 7px;margin-left:6px;font-size:11px}
+.hero{position:relative;overflow:hidden;color:#fff;min-height:660px;background:radial-gradient(700px 500px at 75% 45%,rgba(246,228,228,.28),transparent 65%),linear-gradient(135deg,#6e343a,#A55057 55%,#CB959A)}
+.hero .wrap{position:relative;z-index:2;padding-top:110px;padding-bottom:120px}
+.hero h1{font-size:clamp(38px,5.4vw,68px);max-width:560px;margin-bottom:18px}.hero h1 i{color:#F6E4E4}
+.hero p{max-width:440px;font-size:17px;color:#fbeeee;margin-bottom:28px}.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+#hc{position:absolute;right:-4%;top:0;width:60%;height:100%;z-index:1;cursor:grab}
+.kp{display:flex;gap:28px;margin-top:38px;flex-wrap:wrap}.kp b{display:block;font:400 30px 'Old Standard TT';color:#F6E4E4}.kp span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#f3d8d8}
+.mq{background:var(--rose2);color:#F6E4E4;overflow:hidden;white-space:nowrap;padding:10px 0;font:italic 500 20px 'Cormorant',serif}
+.mq div{display:inline-block;animation:mq 28s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:76px 0}.eye{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:8px}
+h2{font-size:clamp(28px,3.6vw,42px);margin-bottom:8px}.sub{color:var(--mut);max-width:560px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:24px 0 26px}
+.chip{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:9px 18px;font-size:13px;font-weight:600;letter-spacing:.04em}.chip.on{background:var(--rose);border-color:var(--rose);color:#fff}
+.bar input,.bar select{padding:10px 14px;border:1px solid var(--line);font:inherit;font-size:14px;background:var(--card);color:var(--ink);outline:none}.bar .sp{margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;perspective:1200px}
+.card{background:var(--card);box-shadow:1px 1px 12px rgba(128,115,105,.22);padding:10px 10px 18px;display:flex;flex-direction:column;transition:transform .15s,box-shadow .25s;transform-style:preserve-3d;will-change:transform}
+.card:hover{box-shadow:0 24px 44px rgba(128,115,105,.35)}
+.pic{height:260px;position:relative;overflow:hidden;background:var(--blush)}.pic svg{width:100%;height:100%;transition:transform 1.4s}.card:hover .pic svg{transform:scale(1.07)}
+.bd{position:absolute;top:8px;right:8px;background:var(--rose);color:#fff;font-weight:700;font-size:13px;padding:3px 8px;transform:translateZ(30px)}
+.hb{position:absolute;bottom:8px;right:8px;width:34px;height:34px;background:#fff;color:var(--rose);font-size:18px}.hb.on{background:var(--rose);color:#fff}
+.card h3{font:600 15px 'Raleway';text-align:center;margin:12px 6px 4px;min-height:46px}
+.pr{text-align:center;color:var(--mut);font-size:15px}.pr s{opacity:.6;margin-right:6px}.pr b{color:var(--rose);font-weight:700}
+.ac{display:flex;gap:6px;margin-top:12px;padding:0 6px}.ac button{flex:1;padding:10px 6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:600;background:var(--blush);color:var(--rose)}.ac .add{background:var(--rose);color:#fff}
+.ac button:hover{filter:brightness(.93)}.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:30px;border:1px dashed var(--line)}
+.cg{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:28px}
+.cc{position:relative;height:300px;overflow:hidden;cursor:pointer;box-shadow:1px 1px 12px rgba(128,115,105,.3)}.cc svg{width:100%;height:100%;transition:transform 1.4s}.cc:hover svg{transform:scale(1.08)}
+.cc span{position:absolute;left:0;right:0;bottom:0;background:var(--dust);color:#fff;text-align:center;text-transform:uppercase;font-size:13px;letter-spacing:.1em;padding:14px;font-weight:600}
+.alt{background:var(--blush)}.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:32px;text-align:center}
+.feat div{padding:10px}.feat i{width:62px;height:62px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;margin:0 auto 14px;font:400 26px 'Old Standard TT';font-style:normal}
+.feat b{font-size:13px;text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+.rev{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}.rev div{background:var(--card);padding:22px;border-top:3px solid var(--rose)}.rev p{font-size:14px;margin:8px 0}.rev em{color:var(--mut);font-size:13px;font-style:normal;font-weight:600}.st{color:var(--rose);letter-spacing:2px}
+footer{background:linear-gradient(180deg,#2a1417,#1a0c0f);color:#f6e4e4;position:relative;overflow:hidden;padding:0 0 96px}
+.ftq{background:var(--blush);color:var(--rose);overflow:hidden;white-space:nowrap;padding:12px 0;transform:rotate(-1.4deg) scaleX(1.03);margin:34px 0 54px;font:italic 500 22px 'Cormorant',serif;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.ftq div{display:inline-block;animation:mq 34s linear infinite reverse}
+.fg{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:34px;position:relative;z-index:2}
+.fw{font:700 54px 'Old Standard TT',serif;color:#fff;cursor:pointer;display:inline-block;transition:.3s;letter-spacing:.02em}.fw:hover{color:var(--dust);transform:rotate(-3deg) scale(1.06)}
+.fs{color:#d9bcbc;margin:4px 0 20px}
+.fr{background:rgba(255,255,255,.06);border:1px dashed rgba(246,228,228,.35);padding:18px;display:grid;gap:8px;max-width:470px}.fr b{font-size:15px}.fr span{font-size:13px;color:#d9bcbc}
+.fr div{display:flex;gap:8px;flex-wrap:wrap}.fr input{flex:1;min-width:130px;padding:11px 12px;border:1px solid rgba(246,228,228,.3);background:rgba(0,0,0,.25);color:#fff;font:inherit;font-size:14px;outline:none}.fr input:focus{border-color:var(--dust)}.fr .btn{padding:11px 16px;font-size:12px;box-shadow:none}
+.fr em{font-style:normal;font-size:13px;color:#ffd9d9;font-weight:600;min-height:18px}
+footer h4{font:600 12px 'Raleway';letter-spacing:.22em;text-transform:uppercase;color:var(--dust);margin-bottom:14px}
+footer .fg a,footer .fg p{display:block;color:#f6e4e4;font-size:15px;margin:0 0 9px;position:relative;width:fit-content}
+footer .fg a:not(.ph)::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--dust);transition:.3s}footer .fg a:not(.ph):hover::after{width:100%}footer .fg a:hover{color:#fff}
+.ph{background:var(--rose);padding:8px 14px;font-weight:700;letter-spacing:.04em;box-shadow:0 8px 20px rgba(165,80,87,.4);transition:.25s}.ph:hover{animation:wig .5s}@keyframes wig{25%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}75%{transform:rotate(-3deg)}}
+.ft-n{color:#d9bcbc!important;font-size:13px!important}
+.fbig{font:700 clamp(70px,17vw,230px) 'Old Standard TT',serif;line-height:.78;text-align:center;color:transparent;-webkit-text-stroke:1.5px rgba(246,228,228,.2);margin:46px 0 -.06em;user-select:none;transition:.5s;letter-spacing:.03em}.fbig:hover{-webkit-text-stroke-color:rgba(203,149,154,.7)}
+.fz{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(246,228,228,.15);padding-top:18px;margin-top:26px;font-size:13px;color:#c9b3ad;position:relative;z-index:2}.fz a{color:#f6e4e4;text-decoration:underline}
+.up{background:var(--blush);color:var(--rose)!important;text-decoration:none!important;padding:6px 14px;font-weight:700;border-radius:999px;transition:.25s}.up:hover{transform:translateY(-3px)}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr}.fb{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){.ftq div{animation:none}.ph:hover{animation:none}}
+/* overlays */
+.ov{position:fixed;inset:0;background:rgba(40,20,24,.55);z-index:80;display:none}.ov.on{display:block}
+#dr{position:fixed;right:0;top:0;bottom:0;width:min(420px,100%);background:var(--card);z-index:90;transform:translateX(105%);transition:.3s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}#dr.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;font:400 24px 'Old Standard TT'}.x{background:var(--blush);color:var(--rose);width:34px;height:34px;border-radius:50%}
+#its{flex:1;overflow:auto;padding:0 22px}.it{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;font-weight:600}.it .sw{width:50px;height:50px;flex:none;overflow:hidden}.it .sw svg{width:100%;height:100%}.it div{flex:1}.it small{display:block;color:var(--mut);font-weight:500}
+.q{display:flex;align-items:center;gap:6px}.q button{width:26px;height:26px;border-radius:50%;background:var(--blush);color:var(--rose);font-weight:700}
+.tot{padding:18px 22px;border-top:1px solid var(--line)}.tot p{display:flex;justify-content:space-between;font:400 22px 'Old Standard TT';margin-bottom:12px}.tot .btn{width:100%;justify-content:center}
+#ok{display:none;background:#eaf5ec;color:#2d6a3a;padding:12px;margin-top:12px;font-size:14px;font-weight:600}
+#md{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(900px,94vw);max-height:92vh;overflow:auto;background:var(--card);z-index:90;display:none;grid-template-columns:1.15fr 1fr}#md.on{display:grid}
+#v3{width:100%;height:100%;min-height:380px;display:block;background:radial-gradient(circle at 50% 40%,#fbeeee,#CB959A);cursor:grab}
+.mp{padding:26px;display:flex;flex-direction:column;gap:12px}.mp h3{font-size:26px}.mp label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut);font-weight:600}
+.mp input{padding:12px;border:1px solid var(--line);font:inherit;background:var(--bg);color:var(--ink);outline:none;width:100%}
+.cr{display:flex;gap:8px}.cr button{width:34px;height:34px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}.cr button.on{box-shadow:0 0 0 2px var(--rose)}
+.mp .pr2{font:400 28px 'Old Standard TT';color:var(--rose)}.mx{position:absolute;right:12px;top:12px}
+/* chat */
+#cb{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;width:62px;height:62px;border-radius:50%;background:var(--rose);color:#fff;font-size:26px;box-shadow:0 10px 26px rgba(165,80,87,.5)}
+#ch{position:fixed;right:20px;bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:75;width:380px;max-width:calc(100vw - 24px);height:540px;max-height:calc(100vh - 130px);background:var(--card);border:1px solid var(--line);box-shadow:0 24px 60px rgba(60,20,28,.4);display:none;flex-direction:column;overflow:hidden}#ch.on{display:flex}
+.chh{background:linear-gradient(135deg,var(--rose2),var(--rose));color:#fff;padding:14px 16px;display:flex;justify-content:space-between;font:400 19px 'Old Standard TT'}.chh small{display:block;font:500 12px 'Raleway';opacity:.9}
+#cbody{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.m{max-width:88%;padding:10px 14px;font-size:14.5px;white-space:pre-line}.m.b{background:var(--card);border:1px solid var(--line);align-self:flex-start}.m.u{background:var(--rose);color:#fff;align-self:flex-end}
+.rec{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);padding:8px;align-self:flex-start;max-width:94%;font-size:13px;font-weight:600}.rec .sw{width:46px;height:46px;flex:none;overflow:hidden}.rec .sw svg{width:100%;height:100%}.rec div{flex:1}.rec button{background:var(--rose);color:#fff;padding:7px 11px;font-size:12px;font-weight:600}
+.qr{display:flex;flex-wrap:wrap;gap:6px}.qr button{background:var(--card);border:1px solid var(--rose);color:var(--rose);padding:6px 12px;font-weight:600;font-size:13px}
+#cf{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:var(--card)}#cf input{flex:1;padding:11px 14px;border:1px solid var(--line);font:inherit;background:var(--bg);color:var(--ink);outline:none}#cf button{background:var(--rose);color:#fff;width:42px}
+#pg{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--dust));z-index:200;width:0}
+#ld{position:fixed;inset:0;z-index:300;background:linear-gradient(135deg,#6e343a,#A55057);display:grid;place-items:center;text-align:center;color:#fff;transition:opacity .9s,visibility .9s}#ld.off{opacity:0;visibility:hidden}
+.ldb{width:170px;height:2px;background:rgba(255,255,255,.3);margin:20px auto 0;overflow:hidden}.ldb i{display:block;height:100%;background:#fff;width:0;animation:ldb 1.2s ease forwards}@keyframes ldb{to{width:100%}}
+#cur{position:fixed;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:5;background:radial-gradient(circle,rgba(203,149,154,.22),transparent 65%);transform:translate(-50%,-50%);left:-400px;top:-400px}
+@media(hover:none){#cur{display:none}}
+.hero h1 .w{display:inline-block;opacity:0;transform:translateY(46px) rotateX(-70deg);animation:wi 1s cubic-bezier(.2,.8,.2,1) forwards}@keyframes wi{to{opacity:1;transform:none}}
+.hero h1 i{background:linear-gradient(90deg,#fff,#F6E4E4,#ffd9d9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rv{opacity:0;transform:translateY(36px);transition:opacity 1s,transform 1s}.rv.in{opacity:1;transform:none}
+.card{position:relative;animation:up .8s cubic-bezier(.2,.8,.2,1) backwards}.card:nth-child(4n+2){animation-delay:.08s}.card:nth-child(4n+3){animation-delay:.16s}.card:nth-child(4n+4){animation-delay:.24s}@keyframes up{from{opacity:0;transform:translateY(34px)}}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.5),transparent 62%);opacity:0;transition:opacity .3s}.card:hover::after{opacity:1}
+.btn{box-shadow:0 8px 24px rgba(165,80,87,.28)}
+.bld{display:grid;grid-template-columns:1.2fr 1fr;background:var(--card);box-shadow:1px 1px 28px rgba(128,115,105,.28);margin-top:28px}#bc{width:100%;height:100%;min-height:500px;display:block;background:radial-gradient(circle at 50% 40%,#fbeeee,#CB959A);cursor:grab}
+.opt{display:flex;gap:8px;flex-wrap:wrap}.opt button{padding:8px 14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:13px;font-weight:600}.opt button.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.mp label.ck{display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink)}
+@media(max-width:1020px){.bld{grid-template-columns:1fr}#bc{min-height:340px}}
+@media(prefers-reduced-motion:reduce){.hero h1 .w{animation:none;opacity:1;transform:none}.rv{opacity:1;transform:none;transition:none}.card{animation:none}}
+.tot{max-height:58vh;overflow:auto}.dv{display:grid;gap:8px;margin-bottom:12px;font-size:13px;font-weight:500}.dv select,.dv input{padding:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;width:100%}.dv .ln{display:flex;justify-content:space-between}
+#dsl{display:flex;gap:6px}#dsl button{flex:1;padding:7px 4px;font-size:12px;font-weight:600;background:var(--bg);border:1px solid var(--line);color:var(--ink)}#dsl button small{display:block;font-weight:500;color:var(--mut)}#dsl button.on{background:var(--rose);color:#fff;border-color:var(--rose)}#dsl button.on small{color:#fff}#dsl button:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.mp .ads label{display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink);font-weight:500}.mp .ads input{width:auto}
+.fbt{display:flex;gap:8px;flex-wrap:wrap}.fbt button{display:flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:12px;font-weight:600;text-align:left}.fbt .sw{width:32px;height:32px;overflow:hidden;flex:none}.fbt svg{width:100%;height:100%}
+@media(max-width:1020px){.grid,.cg,.feat{grid-template-columns:repeat(2,1fr)}#hc{width:100%;right:-25%;opacity:.5}.rev{grid-template-columns:1fr}#md{grid-template-columns:1fr}#v3{min-height:300px}}
+@media(max-width:640px){nav{display:none}.grid{grid-template-columns:1fr 1fr;gap:12px}.pic{height:190px}.cg{grid-template-columns:1fr 1fr}.cc{height:210px}#ch{right:8px;left:8px;width:auto;max-width:none}.hero .wrap{padding-top:70px}.bar .sp{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.mq div{animation:none}.card,.pic svg,.cc svg{transition:none}}
+</style></head><body>
+<div id="ld"><div><div class="logo" style="color:#fff;font-size:46px">NoteBox<small style="color:#F6E4E4">ПОДАРИ РАДОСТ</small></div><div class="ldb"><i></i></div></div></div><div id="pg"></div><div id="cur"></div><canvas id="fx" style="position:fixed;inset:0;pointer-events:none;z-index:250"></canvas>
+<div class="top">Подаръци за всеки повод · Доставка в цялата страна</div>
+<header><div class="wrap"><a class="logo" href="#top">NoteBox<small>ПОДАРИ РАДОСТ</small></a>
+<nav><a href="#shop">Магазин</a><a href="#cats">Категории</a><a href="#why">Защо NoteBox</a><a href="#ct">Контакти</a></nav>
+<div class="ib"><button id="wl">♡<b id="wc">0</b></button><button id="cbt">Количка<b id="cn">0</b></button></div></div></header>
+<main id="top">
+<section class="hero" style="padding:0"><canvas id="hc"></canvas><div class="wrap">
+<div class="eye" style="color:#F6E4E4">Ръчна изработка · Персонализация</div>
+<h1 id="h1">Подари радост, <i>обичай с жестове!</i></h1>
+<p>Бенто торти със снимка или послание, цветя, романтични кутии и подаръчни кошници. Персонализирайте подаръка си и го разгледайте в 3D, преди да го поръчате.</p>
+<div class="cta"><a class="btn" href="#shop" style="background:#fff;color:var(--rose)">Виж продуктите</a><button class="btn gh" onclick="chOpen(1)">Подбор с AI асистент</button></div>
+<div class="kp"><div><b>3D</b><span>преглед и персонализация</span></div><div><b>8 до 20</b><span>всеки ден</span></div><div><b>BG</b><span>доставка в цялата страна</span></div></div>
+</div></section>
+<div class="mq"><div id="mqi"></div></div>
+
+<section id="shop"><div class="wrap"><div class="eye">Магазин</div><h2>Бестселъри и новости</h2><p class="sub">Избери подарък, завърти го в 3D и добави своето послание.</p>
+<div class="bar" id="chips"></div>
+<div class="bar" style="margin-top:-10px"><input id="q" placeholder="Търсене: торта, рози, кошница…"><select id="so" class="sp"><option value="0">Подреди: препоръчани</option><option value="1">Цена, възходяща</option><option value="2">Цена, низходяща</option></select></div>
+<div class="grid" id="grid"></div><p class="sub" style="margin-top:16px;font-size:12px">Демо редизайн. Продуктите и цените са от текущия сайт, илюстрациите са примерни и ще бъдат заменени със снимките на NoteBox.</p></div></section>
+
+<section id="bld"><div class="wrap"><div class="eye">3D конфигуратор</div><h2>Създай своята торта на живо</h2><p class="sub">Избери блат, крем, топинг и послание. Тортата се променя пред очите ти и можеш да я завъртиш от всички страни.</p>
+<div class="bld"><canvas id="bc"></canvas><div class="mp"><label>Послание върху тортата</label><input id="bi" maxlength="40" value="Обичам те"><label>Снимка върху тортата</label><input type="file" id="bf" accept="image/*"><label>Блат</label><div class="opt" id="bsp"></div><label>Цвят на крема</label><div class="cr" id="bcr"></div><label>Топинг</label><div class="opt" id="btp"></div><label class="ck"><input type="checkbox" id="bk" checked style="width:auto"> Горяща свещ (+€2)</label><div class="pr2" id="bp">€33</div><button class="btn" id="badd" style="justify-content:center;margin-top:auto">Добави в количката</button></div></div></div></section>
+
+<section class="alt" id="cats"><div class="wrap"><div class="eye">Категории</div><h2>Подаръци за всеки повод</h2><div class="cg" id="cg"></div></div></section>
+
+<section id="why"><div class="wrap"><div class="eye" style="text-align:center">Защо NoteBox?</div><h2 style="text-align:center">Правим подаръците лични</h2>
+<div class="feat"><div><i>✎</i><b>Ръчна изработка и персонализация</b></div><div><i>✓</i><b>Компетентно обслужване</b></div><div><i>➜</i><b>Бърза и лесна доставка</b></div><div><i>♡</i><b>Социално отговорна компания</b></div></div></div></section>
+
+<section class="alt"><div class="wrap"><div class="eye">Доволни клиенти</div><h2>Какво казват за нас</h2>
+<div class="rev"><div><span class="st">★★★★★</span><p>Страхотни сте! Благодаря и че правите възможна тази изненада!</p><em>София К.</em></div><div><span class="st">★★★★★</span><p>Тортата, която поръчах за рождения ми ден, беше много вкусна и прясна. Точно визията, която поръчах.</p><em>Пресияна Г.</em></div><div><span class="st">★★★★★</span><p>Кутиите са старателно и красиво изработени, нямам забележки. Определено ще поръчвам отново.</p><em>Нели Р.</em></div></div></div></section>
+</main>
+<footer id="ct"><div class="ftq"><div id="ftq"></div></div>
+<div class="wrap fg"><div class="fb"><div class="fw" id="fw" title="Натисни ме 😏">NoteBox</div><p class="fs">Подари радост, обичай с жестове!</p>
+<form class="fr" id="fr"><b>🔔 Да не забравиш важна дата</b><span>Кажи ни кога е рожденият ден и ще ти напомним навреме. Ние не казваме на никого. 🤫</span><div><input type="email" required placeholder="твоят имейл" aria-label="Имейл"><input type="date" required aria-label="Дата"><button class="btn">Напомни ми</button></div><em id="frok"></em></form></div>
+<div><h4>Магазин</h4><a href="#shop" data-c="cake">Бенто торти</a><a href="#shop" data-c="bouq">Цветя и букети</a><a href="#shop" data-c="rom">Романтични подаръци</a><a href="#shop" data-c="bask">Подаръчни кошници</a><a href="#bld">3D торта по поръчка</a></div>
+<div><h4>Пиши ни</h4><a class="ph" href="tel:0895704644">📞 0895704644</a><a href="mailto:info@notebox.bg">✉ info@notebox.bg</a><p>Магазин за цветя:<br>София, ул. Врабча 12</p></div>
+<div><h4>Работим</h4><p>Всеки ден<br><b>8:00 до 20:00 ч.</b></p><p class="ft-n">Доставка в цялата страна</p></div></div>
+<div class="fbig" aria-hidden="true">NOTEBOX</div>
+<div class="wrap fz"><span>© 2026 NoteBox · Демо редизайн, подготвено от <a href="https://hackera.online">Hackera</a> · hackera.online</span><a href="#top" class="up">↑ Нагоре</a></div></footer>
+
+<div class="ov" id="ov"></div>
+<aside id="dr"><div class="dh"><span>Вашата количка</span><button class="x" id="cx">✕</button></div><div id="its"></div>
+<div class="tot"><div class="dv"><div class="eye" style="margin:0">Доставка (примерни условия)</div><select id="dcity"></select><input type="date" id="ddate" aria-label="Дата на доставка"><div id="dsl"></div><div class="ln"><span>Доставка</span><b id="dfe">€0</b></div><div id="dmsg" style="color:var(--rose);font-weight:600"></div></div><p><span>Общо</span><span id="sum">€0</span></p><button class="btn" id="co">Завърши поръчката</button><div id="ok">Благодарим! Поръчката е приета и ще се свържем с вас за доставката. (демо)</div></div></aside>
+<div id="md"><button class="x mx" id="mxb">✕</button><canvas id="v3"></canvas>
+<div class="mp"><div class="eye" id="mk"></div><h3 id="mt"></h3><div class="pr2" id="mp"></div>
+<label id="ml">Послание</label><input id="mi" maxlength="40" placeholder="Напр. Честит рожден ден!">
+<div id="mcw"><label>Цвят на крема</label><div class="cr" id="cr"></div></div>
+<div id="mfw"><label>Снимка върху тортата</label><input type="file" id="mf" accept="image/*"></div><div id="msw"><label>Размер</label><div class="opt" id="msz"></div><label>Вкус</label><div class="opt" id="mfl"></div></div><label>Добавки</label><div class="ads" id="mad"></div><label>Често купувани заедно</label><div class="fbt" id="fbt"></div><p class="sub" style="font-size:13px">Въртете подаръка с мишката или пръста. Съобщението се показва върху него в реално време.</p>
+<button class="btn" id="madd" style="justify-content:center;margin-top:auto">Добави в количката</button></div></div>
+<button id="cb" aria-label="AI асистент" onclick="chOpen()">💬</button>
+<div id="ch"><div class="chh"><div>NoteBox Асистент<small>AI подбира подарък и го добавя в количката</small></div><button class="x" onclick="chOpen(0)">✕</button></div><div id="cbody"></div>
+<form id="cf"><input id="ci" placeholder="Напр. торта за рожден ден до €35" autocomplete="off"><button aria-label="Изпрати">➤</button></form></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const CT={all:"Всички",cake:"Бенто торти и десерти",bouq:"Цветя и букети",rom:"Романтични подаръци",bask:"Подаръчни кошници"};
+const P=[
+{id:1,n:"Горяща бенто торта със снимка или послание по ваш избор",c:"cake",p:33,col:"#CB959A",k:"рожден ден торта свещ горяща послание изненада",candle:1},
+{id:2,n:"Стилна бенто торта Flower Dance",c:"cake",p:31,col:"#F6E4E4",k:"торта цветя стилна рожден ден жена"},
+{id:3,n:"Бенто торта със снимка и надпис Photo Frame",c:"cake",p:31,col:"#E8C9B0",k:"торта снимка надпис рожден ден photo"},
+{id:4,n:"Романтична бенто торта Лейди и Скитника",c:"cake",p:31,col:"#CB959A",k:"торта любов романтична валентин годишнина"},
+{id:5,n:"Бенто торта с послание Семейна любов",c:"cake",p:31,col:"#F6E4E4",k:"торта семейна любов семейство послание"},
+{id:6,n:"Кутия с червени рози и буква по ваш избор",c:"rom",p:54,col:"#A55057",k:"рози кутия буква любов романтичен годишнина вечни"},
+{id:7,n:"Романтична кутия Candy & Moet",c:"rom",p:69,o:85,col:"#8B5650",k:"кутия романтичен шампанско моет бонбони любов подарък"},
+{id:8,n:"Бенто торта Sweet & Spicy",c:"cake",p:31,col:"#E8C9B0",k:"торта sweet spicy шеговит приятел мъж"},
+{id:9,n:"Стилна кошница с бутилка розе и шоколад Lindt",c:"bask",p:89,col:"#C59F9B",k:"кошница вино розе шоколад lindt подарък"},
+{id:10,n:"Pink choco букет с розови рози и шоколад",c:"bouq",p:63.91,col:"#CB959A",k:"букет рози розови шоколад цветя жена"},
+{id:11,n:"Бенто торта за бременна жена: Ще бъдем трима!",c:"cake",p:31,col:"#F6E4E4",k:"торта бременна бебе новина трима"},
+{id:12,n:"Бенто торта с ваша снимка и надпис по ваш избор",c:"cake",p:31,col:"#E8C9B0",k:"торта снимка надпис ваша персонализирана"},
+{id:100,n:"Твоята торта по поръчка (3D конфигуратор)",c:"cake",p:33,col:"#CB959A",k:"",hid:1}];
+let cat="all",cart={},wish=new Set();
+const f=n=>"€"+(Math.round(n*100)/100).toString().replace(/(\.\d)$/,"$10");
+function art(p){const c=p.col,k=p.c;let s=`<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><rect width="200" height="200" fill="#F6E4E4"/><circle cx="150" cy="45" r="55" fill="#fff" opacity=".5"/>`;
+if(k==="cake")s+=`<ellipse cx="100" cy="160" rx="62" ry="10" fill="#8B5650" opacity=".18"/><rect x="48" y="95" width="104" height="62" rx="10" fill="${c}"/><rect x="44" y="80" width="112" height="26" rx="13" fill="#fff"/><circle cx="70" cy="76" r="7" fill="#A55057"/><circle cx="100" cy="72" r="7" fill="#A55057"/><circle cx="130" cy="76" r="7" fill="#A55057"/><rect x="76" y="118" width="48" height="6" rx="3" fill="#fff" opacity=".8"/>`+(p.candle?`<rect x="97" y="48" width="6" height="26" fill="#fff"/><path d="M100 28c8 8 6 16 0 18-6-2-8-10 0-18z" fill="#ff9a3c"/>`:"");
+else if(k==="rom")s+=`<rect x="40" y="90" width="120" height="70" fill="${c}"/><rect x="34" y="76" width="132" height="22" fill="#A55057"/><rect x="94" y="76" width="12" height="84" fill="#F8F3ED"/><circle cx="82" cy="66" r="12" fill="#c0262d"/><circle cx="104" cy="60" r="13" fill="#d83a44"/><circle cx="124" cy="68" r="11" fill="#c0262d"/>`;
+else if(k==="bask")s+=`<path d="M45 100a55 40 0 0 1 110 0" fill="none" stroke="#8B5650" stroke-width="6"/><path d="M40 105h120l-14 56H54z" fill="${c}"/><rect x="88" y="52" width="22" height="52" rx="6" fill="#e9a3b0"/><rect x="95" y="38" width="8" height="16" fill="#e9a3b0"/><rect x="58" y="112" width="40" height="14" fill="#8B5650"/>`;
+else s+=`<path d="M60 100h80l-30 70h-20z" fill="#F8F3ED" stroke="${c}" stroke-width="3"/><circle cx="82" cy="86" r="17" fill="#e58a9a"/><circle cx="104" cy="74" r="19" fill="${c}"/><circle cx="124" cy="88" r="16" fill="#e58a9a"/><circle cx="100" cy="98" r="14" fill="#d9697c"/><path d="M92 128h16" stroke="#A55057" stroke-width="6"/>`;
+return s+"</svg>"}
+function list(){const q=$("#q").value.trim().toLowerCase(),so=$("#so").value;let r=P.filter(p=>!p.hid&&(cat==="all"||p.c===cat)&&(!q||(p.n+" "+p.k).toLowerCase().includes(q)));if(so==="1")r.sort((a,b)=>a.p-b.p);if(so==="2")r.sort((a,b)=>b.p-a.p);return r}
+function render(){$("#chips").innerHTML=Object.entries(CT).map(([k,v])=>`<button class="chip ${cat===k?"on":""}" data-k="${k}">${v}</button>`).join("");
+document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{cat=b.dataset.k;render()});
+const r=list();$("#grid").innerHTML=r.length?r.map(p=>`<article class="card"><div class="pic">${art(p)}${p.o?`<span class="bd">−${Math.round((1-p.p/p.o)*100)}%</span>`:""}<button class="hb ${wish.has(p.id)?"on":""}" data-w="${p.id}" aria-label="Любими">♡</button></div><h3>${p.n}</h3><div class="pr">${p.o?`<s>${f(p.o)}</s>`:""}<b>${f(p.p)}</b></div><div class="ac"><button data-v="${p.id}">3D преглед</button><button class="add" data-a="${p.id}">Добави</button></div></article>`).join(""):`<div class="empty">Няма резултати. Попитайте AI асистента.</div>`;
+document.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>add(+b.dataset.a,"",0));
+document.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>view3d(+b.dataset.v));
+document.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>{const i=+b.dataset.w;wish.has(i)?wish.delete(i):wish.add(i);$("#wc").textContent=wish.size;b.classList.toggle("on")});
+document.querySelectorAll(".card").forEach(c=>{c.onmousemove=e=>{const b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;c.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg) translateZ(8px)`};c.onmouseleave=()=>c.style.transform=""})}
+["q","so"].forEach(i=>$("#"+i).oninput=render);
+$("#cg").innerHTML=["bouq","cake","rom","bask"].map(k=>{const p=P.find(x=>x.c===k);return `<div class="cc" data-k="${k}">${art(p)}<span>${CT[k]}</span></div>`}).join("");
+document.querySelectorAll(".cc").forEach(c=>c.onclick=()=>{cat=c.dataset.k;render();$("#shop").scrollIntoView()});
+$("#mqi").innerHTML=Array(8).fill("Подари радост ✦ Обичай с жестове ✦ Бенто торти ✦ Цветя ✦ Подаръчни кошници ✦ ").join("");
+/* cart */
+function add(id,note,quiet,pr){const k=id+"|"+note+"|"+(pr||"");cart[k]=cart[k]||{id,note,q:0,pr};cart[k].q++;cu();burst();if(!quiet)dr(1)}
+function cu(){const ks=Object.keys(cart);let n=0,s=0;
+$("#its").innerHTML=ks.length?ks.map(k=>{const it=cart[k],p=P.find(x=>x.id===it.id);n+=it.q;s+=it.q*(it.pr||p.p);return `<div class="it"><div class="sw">${art(p)}</div><div>${p.n}<small>${f(it.pr||p.p)}${it.note?" · „"+it.note.replace(/</g,"&lt;")+"“":""}</small></div><span class="q"><button data-m="${k}">−</button>${it.q}<button data-p="${k}">+</button></span></div>`}).join(""):`<p style="padding:24px 0;color:var(--mut)">Количката е празна.</p>`;
+$("#cn").textContent=n;$("#sum").textContent=f(s+(s?DC:0));$("#dfe").textContent=f(s?DC:0);
+document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{cart[b.dataset.p].q++;cu()});
+document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{if(--cart[b.dataset.m].q<=0)delete cart[b.dataset.m];cu()})}
+function dr(v){$("#dr").classList.toggle("on",v);$("#ov").classList.toggle("on",v||$("#md").classList.contains("on"));if(v)$("#ok").style.display="none"}
+$("#cbt").onclick=()=>dr(1);$("#cx").onclick=()=>dr(0);$("#ov").onclick=()=>{dr(0);closeM()};
+$("#co").onclick=()=>{if(!Object.keys(cart).length)return;if(!DD||!DS){$("#dmsg").textContent="Изберете дата и час за доставка.";return}$("#dmsg").textContent="";$("#ok").textContent="Благодарим! Поръчката е приета за "+DD.split("-").reverse().join(".")+", "+DS+". Ще се свържем с вас за потвърждение. (демо)";cart={};cu();$("#ok").style.display="block"};
+/* 3D builders */
+const M=(c,r)=>new THREE.MeshStandardMaterial({color:c,roughness:r||.55,metalness:.05});
+const cyl=(a,b,h,c,y,s)=>{const m=new THREE.Mesh(new THREE.CylinderGeometry(a,b,h,s||48),M(c));m.position.y=y;return m};
+const sph=(r,c,x,y,z)=>{const m=new THREE.Mesh(new THREE.SphereGeometry(r,20,20),M(c,.4));m.position.set(x,y,z);return m};
+function rose(x,y,z,c,r){const g=new THREE.Group(),b=new THREE.Color(c);
+const bud=new THREE.Mesh(new THREE.SphereGeometry(r*.34,14,12),M(b.clone().multiplyScalar(.7),.5));bud.position.y=r*.28;g.add(bud);
+for(let k=0;k<3;k++){const n=4+k*2,rad=r*(.2+k*.26),h=r*(.24-k*.16),col=b.clone().multiplyScalar(.82+k*.1);
+for(let i=0;i<n;i++){const a=i/n*6.2832+k*.55,p=new THREE.Mesh(new THREE.SphereGeometry(r*.42,14,10),M(col,.5));p.scale.set(1,.62,.4);p.position.set(Math.cos(a)*rad,h,Math.sin(a)*rad);p.rotation.y=-a-Math.PI/2;p.rotateX(-(.25+k*.25));g.add(p)}}
+g.position.set(x,y,z);return g}
+function heart(x,cx,cy,s,col){x.save();x.translate(cx,cy);x.scale(s,s);x.fillStyle=col;x.beginPath();x.moveTo(0,.6);x.bezierCurveTo(-1,-.1,-.6,-.9,0,-.4);x.bezierCurveTo(.6,-.9,1,-.1,0,.6);x.fill();x.restore()}
+function wrapT(x,t,w){const ws=t.split(/\s+/).filter(Boolean),ls=[];let l="";ws.forEach(s=>{const n=l?l+" "+s:s;if(x.measureText(n).width>w&&l){ls.push(l);l=s}else l=n});if(l)ls.push(l);return ls}
+function tex(txt,img){const S=1024,C=S/2,cv=document.createElement("canvas");cv.width=cv.height=S;const x=cv.getContext("2d");x.clearRect(0,0,S,S);
+x.fillStyle="#fffaf6";x.beginPath();x.arc(C,C,478,0,7);x.fill();for(let i=0;i<44;i++){const a=i/44*6.2832;x.beginPath();x.arc(C+Math.cos(a)*470,C+Math.sin(a)*470,36,0,7);x.fill()}
+x.strokeStyle="#CB959A";x.lineWidth=6;x.beginPath();x.arc(C,C,440,0,7);x.stroke();
+x.setLineDash([1,15]);x.lineCap="round";x.lineWidth=9;x.strokeStyle="#A55057";x.beginPath();x.arc(C,C,418,0,7);x.stroke();x.setLineDash([]);
+if(img){x.save();x.beginPath();x.arc(C,C,392,0,7);x.clip();const s=Math.max(784/img.width,784/img.height);x.drawImage(img,C-img.width*s/2,C-img.height*s/2,img.width*s,img.height*s);x.restore();x.strokeStyle="#fff";x.lineWidth=10;x.beginPath();x.arc(C,C,392,0,7);x.stroke()}
+const t=(txt||"").trim(),w=img?640:600;x.textAlign="center";x.textBaseline="middle";x.lineJoin="round";
+if(t){let sz=img?96:170,ls=[t];for(;sz>=52;sz-=6){x.font=`italic 500 ${sz}px Cormorant,'Old Standard TT',Georgia,serif`;ls=wrapT(x,t,w);if(ls.length*sz*1.05<=(img?200:470)&&ls.every(s=>x.measureText(s).width<=w))break}
+const lh=sz*1.05,bh=ls.length*lh;
+if(img){const y0=858-(ls.length-1)*lh/2;x.strokeStyle="#8B5650";x.lineWidth=14;x.fillStyle="#fff";ls.forEach((s,i)=>{x.strokeText(s,C,y0+i*lh);x.fillText(s,C,y0+i*lh)})}
+else{const y0=C-bh/2+lh/2+26;x.fillStyle="#8B5650";ls.forEach((s,i)=>x.fillText(s,C,y0+i*lh));
+heart(x,C,y0-lh/2-44,30,"#CB959A");const by=y0+bh-lh/2+46;x.strokeStyle="#CB959A";x.lineWidth=5;x.beginPath();x.moveTo(C-130,by);x.lineTo(C-26,by);x.moveTo(C+26,by);x.lineTo(C+130,by);x.stroke();x.fillStyle="#A55057";x.beginPath();x.arc(C,by,7,0,7);x.fill()}}
+else if(!img){heart(x,C,C-6,150,"#CB959A");x.strokeStyle="#CB959A";x.lineWidth=5;x.beginPath();x.moveTo(C-130,C+190);x.lineTo(C+130,C+190);x.stroke()}
+const T=new THREE.CanvasTexture(cv);T.anisotropy=8;return T}
+let _dl,_cr,_gl;
+function doily(){if(_dl)return _dl;const S=512,C=S/2,cv=document.createElement("canvas");cv.width=cv.height=S;const x=cv.getContext("2d");x.fillStyle="#fffdfb";x.beginPath();x.arc(C,C,C-2,0,7);x.fill();
+for(let i=0;i<48;i++){const a=i/48*6.2832;x.beginPath();x.arc(C+Math.cos(a)*(C-12),C+Math.sin(a)*(C-12),12,0,7);x.fill()}
+x.globalCompositeOperation="destination-out";[[226,48,6],[200,40,5],[172,32,5.5]].forEach(q=>{for(let i=0;i<q[1];i++){const a=i/q[1]*6.2832;x.beginPath();x.arc(C+Math.cos(a)*q[0],C+Math.sin(a)*q[0],q[2],0,7);x.fill()}});
+x.globalCompositeOperation="source-over";x.strokeStyle="#eadcd6";x.lineWidth=2;x.beginPath();x.arc(C,C,236,0,7);x.stroke();x.beginPath();x.arc(C,C,150,0,7);x.stroke();
+return _dl=new THREE.CanvasTexture(cv)}
+function crumb(){if(_cr)return _cr;const cv=document.createElement("canvas");cv.width=cv.height=256;const x=cv.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,256,256);
+for(let i=0;i<2200;i++){x.fillStyle=`rgba(${90+Math.random()*60|0},${60+Math.random()*40|0},40,${.06+Math.random()*.12})`;x.beginPath();x.arc(Math.random()*256,Math.random()*256,.6+Math.random()*2.2,0,7);x.fill()}
+const t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(5,1);return _cr=t}
+function glow(){if(_gl)return _gl;const cv=document.createElement("canvas");cv.width=cv.height=128;const x=cv.getContext("2d"),g=x.createRadialGradient(64,64,0,64,64,64);g.addColorStop(0,"rgba(255,214,140,.95)");g.addColorStop(.35,"rgba(255,170,90,.35)");g.addColorStop(1,"rgba(255,150,80,0)");x.fillStyle=g;x.fillRect(0,0,128,128);return _gl=new THREE.CanvasTexture(cv)}
+const STAR=(()=>{if(!window.THREE)return null;const s=new THREE.Shape();for(let i=0;i<10;i++){const a=i/10*6.2832-1.5708,r=i%2?.075:.17,px=Math.cos(a)*r,py=Math.sin(a)*r;i?s.lineTo(px,py):s.moveTo(px,py)}s.closePath();return s})();
+function build(kind,o){o=o||{};const g=new THREE.Group();g.userData={};
+if(kind==="cake"){
+const cm=M(o.cream||0xf3c6cc,.36),spm=new THREE.MeshStandardMaterial({color:o.sponge||0xe8c9b0,roughness:.9,map:crumb()}),gold=new THREE.MeshStandardMaterial({color:0xd8b25a,roughness:.28,metalness:.85});
+const mk=(geo,mat,x,y,z)=>{const m=new THREE.Mesh(geo,mat);m.position.set(x||0,y||0,z||0);g.add(m);return m};
+const CY=(a,b,h,mat,y)=>mk(new THREE.CylinderGeometry(a,b,h,72),mat,0,y,0);
+const sh=mk(new THREE.CircleGeometry(3.4,48),new THREE.ShadowMaterial({opacity:.24}),0,-.606,0);sh.rotation.x=-Math.PI/2;
+CY(1.84,1.8,.08,M(0xffffff,.35),-.56);
+const rim=mk(new THREE.TorusGeometry(1.82,.022,10,100),gold,0,-.52,0);rim.rotation.x=Math.PI/2;
+const dt=mk(new THREE.CircleGeometry(1.62,72),new THREE.MeshBasicMaterial({map:doily(),transparent:true,depthWrite:false}),0,-.512,0);dt.rotation.x=-Math.PI/2;
+[-.38,-.04,.30].forEach(y=>CY(1.2,1.2,.28,spm,y));
+[-.21,.13].forEach(y=>CY(1.222,1.222,.07,cm,y));
+const cap=CY(1.27,1.27,.17,cm,.525);g.userData.cream=cap;
+const lip=mk(new THREE.TorusGeometry(1.245,.034,12,96),cm,0,.608,0);lip.rotation.x=Math.PI/2;
+const DL=[.34,.2,.5,.26,.42,.18,.36,.28,.52,.22,.4,.3,.24,.46];
+DL.forEach((L,i)=>{const a=i/DL.length*6.2832+.2,rr=.075+(i%3)*.012,x=Math.cos(a)*1.2,z=Math.sin(a)*1.2;mk(new THREE.CylinderGeometry(rr,rr,L,14),cm,x,.58-L/2,z);mk(new THREE.SphereGeometry(rr,14,12),cm,x,.58-L,z)});
+for(let i=0;i<36;i++){const a=i/36*6.2832,m=mk(new THREE.SphereGeometry(.095,14,12),cm,Math.cos(a)*1.25,-.43,Math.sin(a)*1.25);m.scale.set(1,.85,1)}
+const N=20,tops=[3,10,17];
+for(let i=0;i<N;i++){const a=i/N*6.2832,x=Math.cos(a)*1.07,z=Math.sin(a)*1.07;if(tops.includes(i)||(o.candle&&i===15))continue;
+const r=new THREE.Group();[[.11,.035,0],[.08,.03,.045],[.05,.028,.085]].forEach(t=>{const m=new THREE.Mesh(new THREE.TorusGeometry(t[0],t[1],8,20),cm);m.rotation.x=Math.PI/2;m.position.y=t[2]+.03;r.add(m)});
+const tip=new THREE.Mesh(new THREE.SphereGeometry(.03,10,8),cm);tip.position.y=.14;r.add(tip);r.position.set(x,.61,z);g.add(r)}
+for(let i=0;i<28;i++){const a=(i+.5)/28*6.2832;mk(new THREE.SphereGeometry(.034,10,8),i%2?M(0xffffff,.3):gold,Math.cos(a)*.915,.64,Math.sin(a)*.915)}
+const tm=mk(new THREE.CircleGeometry(.86,72),new THREE.MeshStandardMaterial({map:tex(o.text,o.img),transparent:true,roughness:.55}),0,.618,0);tm.rotation.x=-Math.PI/2;g.userData.top=tm;
+const tp=o.top||"cherry";
+tops.forEach(i=>{const a=i/N*6.2832,x=Math.cos(a)*1.07,z=Math.sin(a)*1.07;
+if(tp==="roses")g.add(rose(x,.7,z,0xc0262d,.21));
+else if(tp==="stars"){const s=new THREE.Mesh(new THREE.ExtrudeGeometry(STAR,{depth:.05,bevelEnabled:true,bevelSize:.012,bevelThickness:.012,bevelSegments:2}),gold);s.position.set(x,.83,z);s.rotation.y=Math.PI/2-a;s.scale.setScalar(1.25);g.add(s)}
+else{const gr=new THREE.Group(),c=new THREE.Mesh(new THREE.SphereGeometry(.15,28,22),new THREE.MeshPhysicalMaterial({color:0xa5121f,roughness:.18,clearcoat:1,clearcoatRoughness:.08}));c.scale.y=.92;c.position.y=.14;gr.add(c);
+gr.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.QuadraticBezierCurve3(new THREE.Vector3(0,.27,0),new THREE.Vector3(.02,.42,.03),new THREE.Vector3(.1,.5,.06)),10,.012,6),M(0x5a6b2e,.7)));
+const lf=new THREE.Mesh(new THREE.SphereGeometry(.07,12,10),M(0x4f8a3c,.6));lf.scale.set(1.5,.16,.8);lf.position.set(.1,.48,.06);lf.rotation.z=.4;gr.add(lf);
+gr.position.set(x,.61,z);gr.rotation.y=-a;g.add(gr)}});
+if(o.candle){const cz=-1.07,cn=mk(new THREE.CylinderGeometry(.055,.055,.62,20),M(0xfff6ee,.5),0,.92,cz);
+for(let k=0;k<4;k++){const b=mk(new THREE.TorusGeometry(.057,.012,8,24),M(0xe58a9a,.5),0,.72+k*.14,cz);b.rotation.x=Math.PI/2}
+mk(new THREE.CylinderGeometry(.006,.006,.06,6),M(0x2b1d1a,.8),0,1.25,cz);
+const fl=new THREE.Group(),B1=new THREE.MeshBasicMaterial({color:0xffa42e,transparent:true,opacity:.95}),B2=new THREE.MeshBasicMaterial({color:0xfff0b0});
+const o1=new THREE.Mesh(new THREE.ConeGeometry(.07,.24,18),B1);o1.position.y=.12;fl.add(o1);fl.add(new THREE.Mesh(new THREE.SphereGeometry(.07,14,12),B1));
+const o2=new THREE.Mesh(new THREE.ConeGeometry(.038,.15,14),B2);o2.position.y=.08;fl.add(o2);const o3=new THREE.Mesh(new THREE.SphereGeometry(.038,12,10),B2);o3.position.y=-.005;fl.add(o3);
+fl.position.set(0,1.28,cz);g.add(fl);g.userData.flame=fl;
+const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:glow(),blending:THREE.AdditiveBlending,transparent:true,depthWrite:false,opacity:.85}));sp.scale.set(1,1,1);sp.position.set(0,1.4,cz);g.add(sp);
+const L=new THREE.PointLight(0xffb066,.65,3.2);L.position.set(0,1.45,cz);g.add(L);g.userData.light=L}
+g.traverse(m=>{if(m.isMesh&&m!==sh&&!(m.material&&m.material.type==="MeshBasicMaterial")){m.castShadow=true;m.receiveShadow=true}});sh.receiveShadow=true;
+g.userData.txt=o.text;g.userData.img=o.img}
+else if(kind==="rom"){const b=new THREE.Mesh(new THREE.BoxGeometry(2.3,.95,2.3),M(0xA55057));g.add(b);const l=new THREE.Mesh(new THREE.BoxGeometry(2.46,.3,2.46),M(0x8B5650));l.position.y=.62;g.add(l);
+[[.32,1.3,2.5],[2.5,1.3,.32]].forEach(d=>{const r=new THREE.Mesh(new THREE.BoxGeometry(d[0],.2,d[2]),M(0xF8F3ED));r.position.y=.78;g.add(r)});
+[[-.5,.2],[.4,.45],[.1,-.5],[-.6,-.4],[.7,-.2]].forEach((p,i)=>g.add(rose(p[0],1.1+(i%2)*.06,p[1],0xc0262d,.3)))}
+else if(kind==="bask"){const bs=cyl(1.35,1.05,.9,0xc59f9b,-.1,32);g.add(bs);const h=new THREE.Mesh(new THREE.TorusGeometry(1.25,.07,10,40,Math.PI),M(0x8B5650));h.position.y=.4;g.add(h);
+const bt=cyl(.3,.3,1.3,0xe9a3b0,.8,24);bt.position.x=-.35;g.add(bt);const nk=cyl(.1,.13,.55,0xe9a3b0,1.7,16);nk.position.x=-.35;g.add(nk);
+const ch=new THREE.Mesh(new THREE.BoxGeometry(.95,.26,.65),M(0x6b3a2e));ch.position.set(.55,.5,.1);ch.rotation.y=.3;g.add(ch);g.add(rose(.6,.8,-.5,0xd9697c,.25))}
+else{const w=new THREE.Mesh(new THREE.ConeGeometry(1.15,2.2,32,1,true),new THREE.MeshStandardMaterial({color:0xF6E4E4,side:2,roughness:.7}));w.rotation.x=Math.PI;w.position.y=-.5;g.add(w);
+[[0,.9,0,0xd9697c],[.6,.6,.2,0xe58a9a],[-.6,.6,.1,0xe58a9a],[.2,.55,.7,0xCB959A],[-.25,.5,-.6,0xCB959A],[.55,.45,-.45,0xd9697c],[-.65,.4,.55,0xd9697c]].forEach(p=>g.add(rose(p[0],p[1]+.2,p[2],p[3],.34)));
+const rb=new THREE.Mesh(new THREE.TorusGeometry(.5,.06,8,30),M(0xA55057));rb.rotation.x=Math.PI/2;rb.position.y=-.55;g.add(rb)}
+return g}
+function stage(cv,kind,o){const r=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true}),sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,100);cam.position.set(0,2.2,6.2);cam.lookAt(0,.2,0);
+r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;
+sc.add(new THREE.HemisphereLight(0xfff4f0,0xd9a0a6,.8));const d=new THREE.DirectionalLight(0xfff1e6,.95);d.position.set(3.5,6,4.5);d.castShadow=true;d.shadow.mapSize.set(1024,1024);const sc2=d.shadow.camera;sc2.left=sc2.bottom=-3.4;sc2.right=sc2.top=3.4;sc2.near=1;sc2.far=18;d.shadow.bias=-.0006;d.shadow.normalBias=.02;d.shadow.radius=4;sc.add(d);
+const pt=new THREE.PointLight(0xffd0d0,.45);pt.position.set(-4,2,3);sc.add(pt);const rimL=new THREE.DirectionalLight(0xffc7d4,.55);rimL.position.set(-3,3,-5);sc.add(rimL);
+const S={r,sc,cam,g:null,ry:.5,drag:0,set(k,op){if(S.g){sc.remove(S.g);S.g.traverse(m=>{if(m.geometry)m.geometry.dispose();if(m.material){(Array.isArray(m.material)?m.material:[m.material]).forEach(q=>{if(q.map)q.map.dispose();q.dispose()})}})}S.g=build(k,op);sc.add(S.g)},size(){const b=cv.getBoundingClientRect();if(!b.width)return;r.setPixelRatio(Math.min(2,devicePixelRatio));r.setSize(b.width,b.height,false);cam.aspect=b.width/b.height;cam.updateProjectionMatrix()}};
+S.set(kind,o);S.size();addEventListener("resize",S.size);
+cv.onpointerdown=e=>{S.drag=1;S.lx=e.clientX;cv.setPointerCapture(e.pointerId)};cv.onpointerup=()=>S.drag=0;cv.onpointermove=e=>{if(S.drag){S.ry+=(e.clientX-S.lx)*.012;S.lx=e.clientX}};
+const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;let t=0;
+(function loop(){t+=.016;if(!S.drag&&!rm)S.ry+=.006;if(S.g){S.g.rotation.y=S.ry;const fl=S.g.userData.flame;if(fl){fl.scale.y=1+Math.sin(t*14)*.15+Math.sin(t*23)*.06;fl.scale.x=1+Math.cos(t*11)*.1;fl.rotation.z=Math.sin(t*7)*.05;const LL=S.g.userData.light;if(LL)LL.intensity=.65+Math.sin(t*17)*.12}}if(S.extra)S.extra(t);r.render(sc,cam);requestAnimationFrame(loop)})();return S}
+/* hero */
+let sy=0,H=null;if(window.THREE){H=stage($("#hc"),"cake",{text:"Подари радост",candle:1,cream:0xf3c6cc});H.g.position.y=-.2;H.g.scale.setScalar(1.15);
+const pet=[];for(let i=0;i<26;i++){const m=sph(.05+Math.random()*.06,i%2?0xF6E4E4:0xffffff,0,0,0);m.userData={a:Math.random()*6.28,r:2.2+Math.random()*1.6,y:Math.random()*3-1.2,s:.2+Math.random()*.4};H.sc.add(m);pet.push(m)}
+H.extra=t=>{const k=Math.min(sy,700)/700;H.cam.position.set(0,2.2+k*1.6,6.2-k*1.8);H.cam.lookAt(0,.2,0);H.g.position.y=-.2+k*.5+Math.sin(t*1.2)*.04;pet.forEach(m=>{const u=m.userData;m.position.set(Math.cos(u.a+t*u.s)*u.r,u.y+Math.sin(t*u.s*2)*.25,Math.sin(u.a+t*u.s)*u.r)})}}
+/* modal viewer */
+let V=null,cur=null,note="",cream=0xf3c6cc,mimg=null,msz=0,mfl=0,mads=new Set();
+const CC=[["#f3c6cc",0xf3c6cc],["#fff1dc",0xfff1dc],["#6b4437",0x6b4437],["#c84b63",0xc84b63]];
+function view3d(id){cur=P.find(p=>p.id===id);note="";mimg=null;mrender0();$("#mi").value="";$("#mk").textContent=CT[cur.c];$("#mt").textContent=cur.n;$("#mp").textContent=f(cur.p);
+const ck=cur.c==="cake";$("#mcw").style.display=ck?"block":"none";$("#ml").textContent=ck?"Послание върху тортата":"Послание към картичката";
+$("#cr").innerHTML=CC.map((c,i)=>`<button style="background:${c[0]}" class="${i?"":"on"}" data-i="${i}" aria-label="цвят"></button>`).join("");cream=CC[0][1];
+document.querySelectorAll("#cr button").forEach(b=>b.onclick=()=>{cream=CC[+b.dataset.i][1];document.querySelectorAll("#cr button").forEach(x=>x.classList.remove("on"));b.classList.add("on");if(V&&V.g.userData.cream)V.g.userData.cream.material.color.setHex(cream)});
+$("#md").classList.add("on");$("#ov").classList.add("on");
+if(!window.THREE)return;const kind=ck?"cake":cur.c==="rom"?"rom":cur.c==="bask"?"bask":"bouq";
+if(!V)V=stage($("#v3"),kind,{cream,candle:cur.candle});else V.set(kind,{cream,candle:cur.candle});setTimeout(()=>V.size(),50)}
+$("#mi").oninput=e=>{note=e.target.value;if(V&&V.g.userData.top&&cur.c==="cake"){const m=V.g.userData.top.material;if(m.map)m.map.dispose();m.map=tex(note,mimg);m.needsUpdate=true}};
+function closeM(){$("#md").classList.remove("on");if(!$("#dr").classList.contains("on"))$("#ov").classList.remove("on")}
+$("#mxb").onclick=closeM;$("#madd").onclick=()=>{const ck=cur.c==="cake",pt=[];if(note.trim())pt.push(note.trim());if(mimg)pt.push("ваша снимка");if(ck)pt.push(SZ[msz][0],MFL[mfl][0]);[...mads].forEach(i=>pt.push(ADS[i][0]));add(cur.id,pt.join(", "),1,mpr());closeM();dr(1)};
+/* AI assistant (scripted demo; ready for a live endpoint) */
+const AI_ENDPOINT="";
+function chOpen(v){const c=$("#ch"),on=v===undefined?!c.classList.contains("on"):!!v;c.classList.toggle("on",on);if(on&&!$("#cbody").children.length)hi()}
+function bot(t){const d=document.createElement("div");d.className="m b";d.textContent=t;$("#cbody").appendChild(d);$("#cbody").scrollTop=1e9}
+function me(t){const d=document.createElement("div");d.className="m u";d.textContent=t;$("#cbody").appendChild(d)}
+function recs(a){a.forEach(p=>{const d=document.createElement("div");d.className="rec";d.innerHTML=`<div class="sw">${art(p)}</div><div>${p.n}<br><span style="color:var(--rose)">${f(p.p)}</span></div><button>Добави</button>`;
+d.querySelector("button").onclick=e=>{add(p.id,"",1);e.target.textContent="✔";bot("Добавих го в количката. Ако искате послание или снимка, отворете „3D преглед“ от магазина.")};$("#cbody").appendChild(d)});$("#cbody").scrollTop=1e9}
+function chips(a){const w=document.createElement("div");w.className="qr";a.forEach(x=>{const b=document.createElement("button");b.textContent=x;b.onclick=()=>{w.remove();send(x)};w.appendChild(b)});$("#cbody").appendChild(w)}
+function hi(){bot("Здравейте! Аз съм асистентът на NoteBox. Кажете ми повод и бюджет, например „торта за рожден ден до €35“, и ще ви подбера подарък.");chips(["Рожден ден","Романтичен подарък","Нещо за бременна","Цветя до €70","Кошница"])}
+function send(t){if(!t.trim())return;me(t);const s=t.toLowerCase();
+setTimeout(()=>{
+if(/количк|поръч|плат/.test(s)){bot(Object.keys(cart).length?"Отварям количката ви.":"Количката е празна. Кажете какво търсите.");if(Object.keys(cart).length)dr(1);return}
+if(/достав|кога|срок/.test(s)){bot("Доставяме в цялата страна. Работим всеки ден от 8:00 до 20:00 ч. За точен срок и цена на доставка пишете на 0895704644.");return}
+if(/контакт|телефон|адрес|магазин за цветя/.test(s)){bot("Телефон: 0895704644\nИмейл: info@notebox.bg\nМагазин за цветя: София, ул. Врабча 12");return}
+const bm=s.match(/(\d{2,3})/),bud=bm?+bm[1]:0,w=s.split(/[^а-яa-z]+/).filter(x=>x.length>3);
+let r=P.filter(p=>!p.hid).map(p=>({p,sc:w.reduce((a,x)=>a+(p.k.split(" ").some(k=>k.startsWith(x.slice(0,4))||x.startsWith(k.slice(0,4)))?1:0),0)})).filter(x=>(!bud||x.p.p<=bud)&&(x.sc>0||(bud&&!w.length)));
+if(!r.length&&bud)r=P.filter(p=>!p.hid&&p.p<=bud).map(p=>({p,sc:0}));
+r.sort((a,b)=>b.sc-a.sc||a.p.p-b.p.p);
+if(r.length){bot(`Подбрах ${Math.min(3,r.length)} идеи за вас:`);recs(r.slice(0,3).map(x=>x.p));chips(["Покажи количката","Друга идея"])}
+else{bot("Разбрах. Опитайте с повод като рожден ден, любов, бременност, рози или кошница, или посочете бюджет. За напълно индивидуален подарък пишете на 0895704644.");chips(["Рожден ден","Романтичен подарък","Кошница"])}},450)}
+$("#cf").onsubmit=e=>{e.preventDefault();const v=$("#ci").value;$("#ci").value="";send(v)};
+/* WOW layer */
+function burst(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;const c=$("#fx"),x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;const col=["#A55057","#CB959A","#F6E4E4","#ffd36b","#ffffff"];let ps=Array.from({length:70},()=>({x:LX,y:LY,vx:(Math.random()-.5)*11,vy:-Math.random()*11-3,r:3+Math.random()*5,c:col[Math.random()*5|0],a:Math.random()*6,l:1}));(function fr(){x.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.a+=.2;p.l-=.014;x.globalAlpha=Math.max(p.l,0);x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillRect(-p.r,-p.r/2,p.r*2,p.r);x.restore()});ps=ps.filter(p=>p.l>0);if(ps.length)requestAnimationFrame(fr);else x.clearRect(0,0,c.width,c.height)})();const b=$("#cbt");b.animate([{transform:"scale(1)"},{transform:"scale(1.18)"},{transform:"scale(1)"}],{duration:420})}
+let LX=innerWidth/2,LY=innerHeight/2;addEventListener("pointerdown",e=>{LX=e.clientX;LY=e.clientY},true);
+(()=>{const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;setTimeout(()=>$("#ld").classList.add("off"),rm?0:1300);
+let n=0;const w=t=>t.split(" ").map(x=>`<span class="w" style="animation-delay:${(1.2+n++*.12).toFixed(2)}s">${x}</span>`).join(" ");$("#h1").innerHTML=w("Подари радост,")+" <i>"+w("обичай с жестове!")+"</i>";
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll("h2,.eye,.sub,.feat div,.rev div,.cc,.bld").forEach(e=>{if(e.closest(".hero"))return;e.classList.add("rv");io.observe(e)});
+addEventListener("scroll",()=>{sy=scrollY;$("#pg").style.width=(sy/Math.max(1,document.body.scrollHeight-innerHeight)*100)+"%"},{passive:true});
+const cr=$("#cur");document.addEventListener("pointermove",e=>{cr.style.left=e.clientX+"px";cr.style.top=e.clientY+"px";const c=e.target.closest&&e.target.closest(".card");if(c){const b=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-b.left+"px");c.style.setProperty("--my",e.clientY-b.top+"px")}});
+/* builder */
+const BO={text:"Обичам те",cream:0xf3c6cc,sponge:0xe8c9b0,top:"cherry",candle:1};
+const SP=[["Ванилия",0xe8c9b0],["Шоколад",0x6b4437],["Ягода",0xe9a3b0]],TP=[["Череши","cherry"],["Рози","roses"],["Звезди","stars"]];
+const B=window.THREE?stage($("#bc"),"cake",BO):null;window.BB=B;
+const pr=()=>31+(BO.candle?2:0)+(BO.top==="roses"?4:0);
+function bu(){if(B)B.set("cake",BO);$("#bp").textContent=f(pr())}
+function ob(id,arr,cb){const el=$(id);el.innerHTML=arr.map((a,i)=>`<button class="${i?"":"on"}">${a[0]}</button>`).join("");[...el.children].forEach((b,i)=>b.onclick=()=>{[...el.children].forEach(x=>x.classList.remove("on"));b.classList.add("on");cb(arr[i]);bu()})}
+ob("#bsp",SP,x=>BO.sponge=x[1]);ob("#btp",TP,x=>BO.top=x[1]);
+$("#bcr").innerHTML=CC.map((c,i)=>`<button style="background:${c[0]}" class="${i?"":"on"}" aria-label="цвят"></button>`).join("");
+[...$("#bcr").children].forEach((b,i)=>b.onclick=()=>{[...$("#bcr").children].forEach(x=>x.classList.remove("on"));b.classList.add("on");BO.cream=CC[i][1];bu()});
+$("#bi").oninput=e=>{BO.text=e.target.value;bu()};$("#bf").onchange=e=>{const fl=e.target.files[0];if(fl)loadImg(fl,im=>{BO.img=im;bu()})};$("#bk").onchange=e=>{BO.candle=e.target.checked?1:0;bu()};
+$("#bp").textContent=f(pr());
+$("#badd").onclick=()=>{const nm=SP.find(x=>x[1]===BO.sponge)[0];add(100,`${BO.text||"без послание"}${BO.img?" + снимка":""} · ${nm}, ${BO.top==="roses"?"рози":BO.top==="stars"?"звезди":"череши"}${BO.candle?", свещ":""}`,0,pr())};
+})();
+/* upload, product page options, delivery */
+function loadImg(fl,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>cb(im);im.src=r.result};r.readAsDataURL(fl)}
+const SZ=[["Бенто",0],["Средна",12],["Голяма",24]],MFL=[["Ванилия",0xe8c9b0],["Шоколад",0x6b4437],["Ягода",0xe9a3b0]],ADS=[["Картичка с послание",2],["Балони",5],["Подаръчна опаковка",3]];
+function mpr(){return cur.p+(cur.c==="cake"?SZ[msz][1]:0)+[...mads].reduce((a,i)=>a+ADS[i][1],0)}
+function mrb(){if(!V||!cur)return;const k=cur.c==="cake"?"cake":cur.c==="rom"?"rom":cur.c==="bask"?"bask":"bouq";V.set(k,{cream,candle:cur.candle,sponge:MFL[mfl][1],text:note,img:mimg})}
+function pick(el,i){[...el.children].forEach(x=>x.classList.remove("on"));el.children[i].classList.add("on")}
+function mrender0(){msz=0;mfl=0;mads=new Set();const ck=cur.c==="cake";$("#mfw").style.display=$("#msw").style.display=ck?"block":"none";$("#mf").value="";
+$("#msz").innerHTML=SZ.map((a,i)=>`<button class="${i?"":"on"}">${a[0]}${a[1]?" +€"+a[1]:""}</button>`).join("");[...$("#msz").children].forEach((b,i)=>b.onclick=()=>{msz=i;pick($("#msz"),i);$("#mp").textContent=f(mpr())});
+$("#mfl").innerHTML=MFL.map((a,i)=>`<button class="${i?"":"on"}">${a[0]}</button>`).join("");[...$("#mfl").children].forEach((b,i)=>b.onclick=()=>{mfl=i;pick($("#mfl"),i);mrb()});
+$("#mad").innerHTML=ADS.map((a,i)=>`<label><input type="checkbox" data-i="${i}"> ${a[0]} (+€${a[1]})</label>`).join("");document.querySelectorAll("#mad input").forEach(c=>c.onchange=()=>{const i=+c.dataset.i;c.checked?mads.add(i):mads.delete(i);$("#mp").textContent=f(mpr())});
+const o=[];["cake","bouq","rom","bask"].filter(c=>c!==cur.c).forEach(c=>{const p=P.find(x=>x.c===c&&!x.hid);if(p)o.push(p)});
+$("#fbt").innerHTML=o.slice(0,3).map(p=>`<button data-i="${p.id}"><span class="sw">${art(p)}</span>+ ${p.n.slice(0,24)}… ${f(p.p)}</button>`).join("");document.querySelectorAll("#fbt button").forEach(b=>b.onclick=()=>{add(+b.dataset.i,"",1);b.textContent="✔ Добавено в количката"});
+$("#mp").textContent=f(mpr())}
+$("#mf").onchange=e=>{const fl=e.target.files[0];if(fl)loadImg(fl,im=>{mimg=im;mrb()})};
+let DC=4,DD="",DS="";const SL=["9 до 12 ч.","12 до 16 ч.","16 до 20 ч."],CITY=[["София",4],["Пловдив",7],["Варна",7],["Бургас",7],["Друг град",9]];
+$("#dcity").innerHTML=CITY.map(c=>`<option value="${c[1]}">${c[0]} (€${c[1]})</option>`).join("");$("#dcity").onchange=e=>{DC=+e.target.value;cu()};
+const ddt=$("#ddate"),t0=new Date();t0.setDate(t0.getDate()+1);ddt.min=t0.toISOString().slice(0,10);
+ddt.onchange=()=>{DS="";DD=ddt.value;if(!DD){$("#dsl").innerHTML="";return}const dn=+DD.slice(8,10);$("#dsl").innerHTML=SL.map((s,i)=>{const l=(dn*7+i*3)%5;return `<button data-s="${s}" ${l?"":"disabled"}>${s}<small>${l?"остават "+l:"заето"}</small></button>`}).join("");document.querySelectorAll("#dsl button").forEach(b=>b.onclick=()=>{DS=b.dataset.s;document.querySelectorAll("#dsl button").forEach(x=>x.classList.remove("on"));b.classList.add("on")})};
+if(document.fonts&&window.THREE){Promise.all([document.fonts.load("italic 500 40px Cormorant","Подари радост"),document.fonts.load("italic 500 40px Cormorant","Love")]).then(()=>{[H,window.BB,V].forEach(S=>{const u=S&&S.g&&S.g.userData;if(u&&u.top){const m=u.top.material;if(m.map)m.map.dispose();m.map=tex(u.txt,u.img);m.needsUpdate=true}})}).catch(()=>{})}
+$("#ftq").innerHTML=Array(6).fill("Забравил си годишнината? ✦ Спокойно, пазим тайна ✦ Роза за нея, торта за теб ✦ Подаръкът ти няма да се издаде с кутията ✦ ").join("");
+document.querySelectorAll("[data-c]").forEach(a=>a.onclick=()=>{cat=a.dataset.c;render()});
+$("#fw").onclick=e=>{LX=e.clientX;LY=e.clientY;burst()};
+$("#fr").onsubmit=e=>{e.preventDefault();LX=innerWidth/2;LY=innerHeight-120;burst();$("#frok").textContent="Готово! Ще ти пошушнем навреме. 🤫 (демо)";e.target.reset()};
+render();cu();
+</script></body></html>
